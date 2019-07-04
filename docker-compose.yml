@@ -1,0 +1,65 @@
+version: '2'
+
+networks:
+  app-network:
+    driver: bridge
+services:
+  message_broker_1:
+    image: 'message_broker_1'
+    build:
+      context: ./
+      dockerfile: message_broker_1/Dockerfile
+    container_name: message_broker_1
+    networks:
+      - app-network
+  message_broker_2:
+    image: 'message_broker_2'
+    build:
+      context: ./
+      dockerfile: message_broker_2/Dockerfile
+    container_name: message_broker_2
+    networks:
+      - app-network
+  service_1:
+    depends_on:
+      - proxy
+    image: 'service_1'
+    build:
+      context: ./
+      dockerfile: service_1/Dockerfile
+    container_name: service_1
+    networks:
+      - app-network
+  service_2:
+    depends_on:
+      - proxy
+    image: 'service_2'
+    build:
+      context: ./
+      dockerfile: service_2/Dockerfile
+    container_name: service_2
+    networks:
+      - app-network
+  http_server:
+    depends_on:
+      - proxy
+    image: 'http_server'
+    build:
+      context: ./
+      dockerfile: http_server/Dockerfile
+    container_name: http_server
+    ports:
+      - 8000:8000
+    networks:
+      - app-network
+  proxy:
+    depends_on:
+      - message_broker_1
+      - message_broker_2
+    image: 'proxy'
+    build:
+      context: ./
+      dockerfile: proxy/Dockerfile
+    container_name: proxy
+    networks:
+      - app-network
