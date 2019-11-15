@@ -5,8 +5,8 @@ Simple example of the system based on **nodejs-message-broker** package and Dock
 - http-server which sends requests to microservices;
 
 ```bash
-git clone ...
-cd ./
+git clone git@github.com:Paul-Lazunko/nodejs-message-broker_example.git;
+cd ./nodejs-message-broker_example;
 docker-compose up -d;
 ```
 
