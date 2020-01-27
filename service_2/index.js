@@ -5,8 +5,8 @@ const service = new MessageBrokerClient({
   port: 8888,
   reconnect: true,
   reconnectInterval: 1000,
-  action: 'service_2',
-  secureKey: 'test',
+  id: 'service_2',
+  secureKey: 'testtesttesttesttesttesttesttest',
   requestHandler: async (data, options) => {
     try {
       return { data, options };

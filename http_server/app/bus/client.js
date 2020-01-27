@@ -6,8 +6,8 @@ export const bus = new MessageBrokerClient({
   reconnect: true,
   reconnectInterval: 1000,
   taskInterval: 100,
-  action: 'http_server',
-  secureKey: 'test',
+  id: 'http_server',
+  secureKey: 'testtesttesttesttesttesttesttest',
   requestHandler: async (data, options) => {
 
   }
