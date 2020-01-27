@@ -9,7 +9,7 @@ const service = new MessageBrokerClient({
   secureKey: 'testtesttesttesttesttesttesttest',
   requestHandler: async (data, options) => {
     try {
-      return await service.request({ data, action: 'service_2' }, options, 10000 );
+      return await service.request({ data, id: 'service_2' }, options, 10000 );
     } catch ( error ) {
       console.log({ error })
     }
